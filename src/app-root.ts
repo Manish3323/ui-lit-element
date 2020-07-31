@@ -1,5 +1,5 @@
 import { customElement, property, LitElement, html, css } from 'lit-element';
-
+import './components/seq-manager';
 @customElement('app-root')
 export class AppRoot extends LitElement {
   @property() message = 'Learn LitElement';
@@ -11,16 +11,14 @@ export class AppRoot extends LitElement {
       }
       .wrapper {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: left;
+        align-items: left;
         flex-direction: column;
-        height: 100vh;
-        background-color: #2196f3;
-        background: linear-gradient(315deg, #b4d2ea 0%, #2196f3 100%);
+        background-color: white;
         font-size: 24px;
       }
       .link {
-        color: white;
+        color: black;
       }
     `;
   }
@@ -28,16 +26,7 @@ export class AppRoot extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <h1>LitElement + Snowpack</h1>
-        <p>Edit <code>src/app-root.ts</code> and save to reload.</p>
-        <a
-          class="link"
-          href="https://lit-element.polymer-project.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ${this.message}
-        </a>
+        <seq-manager></seq-manager>
       </div>
     `;
   }

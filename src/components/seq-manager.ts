@@ -1,6 +1,6 @@
 import { customElement, property, LitElement, html, css } from 'lit-element';
 import './comp-location';
-import type { Location } from './models';
+import type { Location, AddOrRemoveEvent } from './models';
 import agentData from '../data/agentData.json';
 @customElement('seq-manager')
 export class SeqManager extends LitElement {
@@ -17,12 +17,30 @@ export class SeqManager extends LitElement {
     `;
   }
 
-  addSeqComp = (e: CustomEvent) => {
-    console.log('added', e.detail);
+  addSeqComp = (e: CustomEvent<AddOrRemoveEvent>) => {
+    console.log('added', e.detail.agentPrefix);
+    const index = this.agents.findIndex(
+      (x) => x.prefix == e.detail.agentPrefix,
+    );
+    this.agents[index].components = [
+      ...this.agents[index].components,
+      { prefix: e.detail.seqCompPrefix },
+    ];
+    this.requestUpdate();
   };
 
-  remSeqComp = (e: CustomEvent) => {
-    console.log('removed', e.detail);
+  remSeqComp = (e: CustomEvent<AddOrRemoveEvent>) => {
+    console.log('rem', e.detail.seqCompPrefix);
+    const index = this.agents.findIndex(
+      (x) => x.prefix == e.detail.agentPrefix,
+    );
+    const newComps = this.agents[index].components.filter(
+      (x) => x.prefix != e.detail.seqCompPrefix,
+    );
+    console.log(newComps);
+
+    this.agents[index].components = [...newComps];
+    this.requestUpdate();
   };
 
   render() {

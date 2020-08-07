@@ -7,3 +7,9 @@ export type SeqComp = {
   prefix: string;
   sequencer?: string;
 };
+
+
+export type AddOrRemoveEvent = {
+  agentPrefix: string,
+  seqCompPrefix: string
+}

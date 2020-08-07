@@ -1,5 +1,5 @@
 import { customElement, property, LitElement, html, css } from 'lit-element';
-import type { SeqComp } from './models';
+import type { SeqComp, AddOrRemoveEvent } from './models';
 const scriptLoadedSvg = html`<img
   src="./script.svg"
   alt="loaded script"
@@ -61,17 +61,8 @@ export class Location extends LitElement {
     `;
   }
 
-  handleAddComp = (agentPrefix: string) => {
-    let myEvent = new CustomEvent('add-seq-comp', {
-      detail: { agentPrefix },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(myEvent);
-  };
-
-  handleRemoveComp = (agentPrefix: string, seqCompPrefix: string) => {
-    let myEvent = new CustomEvent('rem-seq-comp', {
+  handleAddComp = (agentPrefix: string, seqCompPrefix: string) => {
+    let myEvent = new CustomEvent<AddOrRemoveEvent>('add-seq-comp', {
       detail: { agentPrefix, seqCompPrefix },
       bubbles: true,
       composed: true,
@@ -79,14 +70,22 @@ export class Location extends LitElement {
     this.dispatchEvent(myEvent);
   };
 
-  sequencer = () => html``;
+  handleRemoveComp = (agentPrefix: string, seqCompPrefix: string) => {
+    let myEvent = new CustomEvent<AddOrRemoveEvent>('rem-seq-comp', {
+      detail: { agentPrefix, seqCompPrefix },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(myEvent);
+  };
+
   render() {
     const a = this.components;
     return html`
       <div class="wrapper">
         <h3 class="prefix">${this.prefix}</h3>
           <button class="button"
-           @click="${() => this.handleAddComp(this.prefix)}">
+           @click="${() => this.handleAddComp(this.prefix, 'new comp')}">
            +
            </button>
             ${a.map((e) => {

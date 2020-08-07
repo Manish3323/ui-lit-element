@@ -1,41 +1,42 @@
 [
-    {
-      "prefix": "ESW.agent1",
-      "components": [
-        { "prefix": "ESW.ESW_12", "sequencer": "ESW.ESW.ESW_12.DarkNIGHT" },
-        { "prefix": "ESW.ESW_23", "sequencer": "ESW.ESW.ESW_23.DarkNIGHT" },
-        { "prefix": "ESW.ESW_2", "sequencer": "ESW.ESW.ESW_2.DarkNIGHT" },
-        { "prefix": "ESW.ESW_4" },
-        { "prefix": "ESW.ESW_4" },
-        { "prefix": "ESW.ESW_4" },
-        { "prefix": "ESW.ESW_4", "sequencer": "ESW.ESW.ESW_4.DarkNIGHT" }
-      ]
-    },
-    {
-      "prefix": "ESW.agent2",
-      "components": [
-        { "prefix": "ESW.ESW_34", "sequencer": "ESW.ESW_34.DarkNIGHT" },
-        { "prefix": "ESW.ESW_34", "sequencer": "ESW.ESW_34.DarkNIGHT" },
-        { "prefix": "ESW.ESW_34" },
-        { "prefix": "ESW.ESW_34" },
-        { "prefix": "ESW.ESW_34" },
-        { "prefix": "ESW.ESW_34" },
-        { "prefix": "ESW.ESW_34", "sequencer": "ESW.ESW_34.DarkNIGHT" }
-      ]
-    },
-    {
-      "prefix": "TCS.agent1",
-      "components": [
-        { "prefix": "TCS.TCS_56" },
-        { "prefix": "TCS.TCS_56" },
-        { "prefix": "TCS.TCS_56" }
-      ]
-    },
-    {
-      "prefix": "IRIS.agent1",
-      "components": [
-        { "prefix": "IRIS.IRIS_1", "sequencer": "IRIS.IRIS_1.DarkNIGHT" },
-        { "prefix": "IRIS.IRIS_1" }
-      ]
-    }
-  ]
+
+  {
+    "prefix": "ESW.agent1",
+    "components": [
+      { "prefix": "ESW.ESW_12", "sequencer": "ESW.ESW.ESW_12.DarkNIGHT" },
+      { "prefix": "ESW.ESW_23", "sequencer": "ESW.ESW.ESW_23.DarkNIGHT" },
+      { "prefix": "ESW.ESW_2", "sequencer": "ESW.ESW.ESW_2.DarkNIGHT" },
+      { "prefix": "ESW.ESW_4" },
+      { "prefix": "ESW.ESW_5" },
+      { "prefix": "ESW.ESW_6" },
+      { "prefix": "ESW.ESW_7", "sequencer": "ESW.ESW.ESW_7.DarkNIGHT" }
+    ]
+  },
+  {
+    "prefix": "ESW.agent2",
+    "components": [
+      { "prefix": "ESW.ESW_34", "sequencer": "ESW.ESW_34.DarkNIGHT" },
+      { "prefix": "ESW.ESW_32", "sequencer": "ESW.ESW_32.DarkNIGHT" },
+      { "prefix": "ESW.ESW_35" },
+      { "prefix": "ESW.ESW_36" },
+      { "prefix": "ESW.ESW_347" },
+      { "prefix": "ESW.ESW_348" },
+      { "prefix": "ESW.ESW_343", "sequencer": "ESW.ESW_343.DarkNIGHT" }
+    ]
+  },
+  {
+    "prefix": "TCS.agent1",
+    "components": [
+      { "prefix": "TCS.TCS_56" },
+      { "prefix": "TCS.TCS_55" },
+      { "prefix": "TCS.TCS_57" }
+    ]
+  },
+  {
+    "prefix": "IRIS.agent1",
+    "components": [
+      { "prefix": "IRIS.IRIS_1", "sequencer": "IRIS.IRIS_1.DarkNIGHT" },
+      { "prefix": "IRIS.IRIS_2" }
+    ]
+  }
+]

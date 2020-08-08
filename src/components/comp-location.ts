@@ -1,5 +1,6 @@
-import { customElement, property, LitElement, html, css } from 'lit-element';
-import type { SeqComp, AddOrRemoveEvent } from './models';
+import { customElement, property, html, css } from 'lit-element';
+import { SeqComp, store } from '../store/agent';
+import { MobxLitElement } from '@adobe/lit-mobx';
 const scriptLoadedSvg = html`<img
   src="./script.svg"
   alt="loaded script"
@@ -14,10 +15,9 @@ const scriptUnLoadedSvg = html`<img
 />`;
 
 @customElement('comp-location')
-export class Location extends LitElement {
+export class Location extends MobxLitElement {
   @property() prefix: string = '';
   @property() components: Array<SeqComp> = [];
-
   static get styles() {
     return css`
       h1 {
@@ -61,31 +61,19 @@ export class Location extends LitElement {
     `;
   }
 
-  handleAddComp = (agentPrefix: string, seqCompPrefix: string) => {
-    let myEvent = new CustomEvent<AddOrRemoveEvent>('add-seq-comp', {
-      detail: { agentPrefix, seqCompPrefix },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(myEvent);
-  };
-
-  handleRemoveComp = (agentPrefix: string, seqCompPrefix: string) => {
-    let myEvent = new CustomEvent<AddOrRemoveEvent>('rem-seq-comp', {
-      detail: { agentPrefix, seqCompPrefix },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(myEvent);
-  };
 
   render() {
+    const { addSeqComp, removeSeqComp } = store;
     const a = this.components;
     return html`
       <div class="wrapper">
         <h3 class="prefix">${this.prefix}</h3>
           <button class="button"
-           @click="${() => this.handleAddComp(this.prefix, 'new comp')}">
+           @click="${() =>
+             addSeqComp({
+               agentPrefix: this.prefix,
+               seqCompPrefix: 'new comp',
+             })}">
            +
            </button>
             ${a.map((e) => {
@@ -95,7 +83,10 @@ export class Location extends LitElement {
                   <button
                     class="button"
                     @click="${() =>
-                      this.handleRemoveComp(this.prefix, e.prefix)}"
+                      removeSeqComp({
+                        agentPrefix: this.prefix,
+                        seqCompPrefix: e.prefix,
+                      })}"
                   >
                     -
                   </button>
